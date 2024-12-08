@@ -1,5 +1,7 @@
 import './style.css'
 import * as THREE from 'three'
+import { VRButton } from 'three/examples/jsm/webxr/VRButton.js';
+
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
 /**
@@ -64,8 +66,11 @@ const renderer = new THREE.WebGLRenderer({
     canvas: canvas,
     antialias: true,
 })
+renderer.xr.enabled = true
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+document.body.appendChild(renderer.domElement);
+document.body.appendChild(VRButton.createButton(renderer));
 
 /**
  * Animate
